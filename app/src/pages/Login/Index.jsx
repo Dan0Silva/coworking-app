@@ -1,14 +1,26 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Image } from "react-native";
 
+import Text from '../../components/Text/Index';
+import Logo from '../../components/Logo/Index';
 import styles from "./styles";
 
 export default props => {
     return (
         <View style={styles.container}>
-            <Text>
-                Ola mundo
-            </Text>
+            <View style={styles.modal}>
+                <View style={styles.pointer}/>
+
+                <Logo textStyle={styles.textLogoStyle}/>
+
+                <View>
+                    {/* inputs */}
+                </View>
+
+                <View>
+                    {/* buttons */}
+                </View>
+            </View>
         </View>
     )
 }

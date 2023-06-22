@@ -8,18 +8,6 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },
   
-    image: {
-      height: 120,
-      width: 120,
-      borderRadius: 20,
-      marginBottom: 12
-    },
-  
-    test: {
-      fontSize: 18,
-      color: '#fff'
-    },
-  
     buttonsContainer: {
       flex: 3, 
       justifyContent: 'center',
@@ -37,7 +25,11 @@ export default StyleSheet.create({
   
     textButton: {
       fontSize: 18,
-      fontFamily: 'Inter-Bold',
       color: '#000'
+    },
+
+    textSingIn: {
+      color: '#fff',
+      marginTop: 12
     }
   });
