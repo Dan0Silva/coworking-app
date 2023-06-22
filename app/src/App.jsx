@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import Load from './views/Load';
+import Load from './pages/Load/Index';
+import Login from './pages/Login/Index';
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <StatusBar style="light" />
       <Load />
     </View>
   );
@@ -14,5 +16,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#121214'
   }
 });
