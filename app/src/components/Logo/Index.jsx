@@ -12,7 +12,8 @@ export default props => {
             <Image source={imagePath} style={[styles.image, props.imageStyle]}/>
         
             <Text style={[styles.logoText, props.textStyle]}>
-                <Text bold>Cool</Text>-Working
+                {/* <Text bold>Cool</Text>-Working */}
+                <Text bold>Meu app</Text>
             </Text>
         </View>
     )

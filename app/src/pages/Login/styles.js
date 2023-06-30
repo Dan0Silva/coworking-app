@@ -26,7 +26,23 @@ export default StyleSheet.create({
         marginVertical: 15
     },
 
+    logo: {
+        flex: 1
+    },
+
     textLogoStyle: {
         color: '#121214',
     },
+
+    loginForm: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    buttonsView: {
+        flex: 1,
+        backgroundColor: '#faa',
+        width: '100%',
+    }
 })
