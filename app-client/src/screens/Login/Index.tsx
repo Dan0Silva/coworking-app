@@ -51,7 +51,6 @@ export default () => {
             autoCapitalize="none"
             keyboardType="email-address"
           />
-          <TextInput placeholder="Password" secureTextEntry />
 
           <Button
             title={'Login'}

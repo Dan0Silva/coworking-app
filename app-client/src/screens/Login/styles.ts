@@ -72,20 +72,21 @@ export default StyleSheet.create({
 export const logo = StyleSheet.create({
   logoContainer: {
     flex: 1,
-    marginTop: 22,
+    marginTop: 52,
     width: '100%',
     justifyContent: 'space-evenly',
     paddingLeft: 12,
   },
 
   image: {
-    height: 90,
-    width: 90,
+    height: 104,
+    width: 104,
     borderRadius: 12,
   },
 
   title: {
     fontSize: 26,
+    marginTop: 16,
     fontWeight: '600',
     color: '#fff',
   },
