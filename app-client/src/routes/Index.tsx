@@ -1,11 +1,14 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from '@react-navigation/native'
 
-import StackRoutes from './Login.routes';
+import UserProvider from '../contexts/AuthContext'
+import StackRoutes from './Login.routes'
 
 export default () => {
-    return(
-        <NavigationContainer>
-            <StackRoutes/>
-        </NavigationContainer>
-    )
+  return (
+    <UserProvider>
+      <NavigationContainer>
+        <StackRoutes />
+      </NavigationContainer>
+    </UserProvider>
+  )
 }
