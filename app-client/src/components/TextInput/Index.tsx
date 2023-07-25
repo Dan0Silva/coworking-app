@@ -1,22 +1,26 @@
-import React from 'react';
-import { View, TextInput, TextInputProps } from 'react-native';
+import React from 'react'
+import { TextInputProps } from 'react-native'
 
-import styles from './styles';
+import styledComp from './styles'
+import { ThemeType } from '../../themes/styled'
+import { useTheme } from 'styled-components'
 
-interface Props extends TextInputProps {}
+interface Props extends TextInputProps {
+  theme?: ThemeType
+}
 
 export default (props: Props) => {
-    const { placeholder, ...restProps } = props
+  const { placeholder, ...restProps } = props
+  const theme = useTheme()
 
-    return (
-        <View style={styles.container}>
-            <TextInput {...restProps}
-                style={styles.textinput}
-                cursorColor={'#333'}
-                placeholderTextColor={'#aaa'}
-                placeholder={placeholder}
-            />
-
-        </View>
-    )
+  return (
+    <styledComp.Container>
+      <styledComp.TextInput
+        {...restProps}
+        cursorColor={theme.COLORS.TEXT_LABEL}
+        placeholderTextColor={theme.COLORS.TEXT_LABEL}
+        placeholder={placeholder}
+      />
+    </styledComp.Container>
+  )
 }

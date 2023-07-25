@@ -1,7 +1,9 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native'
 
-export default StyleSheet.create({
-    bold: {
-        fontWeight: 'bold'
-    }  
-})
+const styledComp = {
+  Bold: styled.Text`
+    font-weight: bold;
+  `,
+}
+
+export default styledComp

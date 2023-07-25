@@ -1,5 +1,5 @@
 <div style="padding: 20px; border: 3px solid #eee; border-radius: 30px" align="center">
-  <img src="app/src/assets/icon.png" alt="Logo do Projeto" width="120" height="120">
+  <img src="app-client/src/assets/icon.png" alt="Logo do Projeto" width="120" height="120">
   <p style="color: #fafafa; font-size: 32px; font-weight: bold">
     Cool-Working
   </p>

@@ -1,17 +1,25 @@
-import { StyleSheet } from "react-native";
+import styled from 'styled-components/native'
+import { ThemeType } from '../../themes/styled'
 
-export default StyleSheet.create({
-    container: {
-        width: '100%', 
-        height: 54,
-        borderRadius: 12,
-        justifyContent: 'center',
-        paddingHorizontal: 12,
+interface Props {
+  theme: ThemeType
+}
 
-        backgroundColor: '#fff'
-    },
+const styledComp = {
+  Container: styled.View`
+    width: 100%;
+    height: 54px;
+    border-radius: 12px;
+    justify-content: center;
+    padding: 0 12px;
 
-    textinput: { 
-        fontSize: 16
-    },
-})
+    background: ${(props: Props) => props.theme.COLORS.BACKGROUND_INPUT};
+  `,
+
+  TextInput: styled.TextInput`
+    font-size: 16px;
+    color: ${(props: Props) => props.theme.COLORS.TEXT_LABEL};
+  `,
+}
+
+export default styledComp

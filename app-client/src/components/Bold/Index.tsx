@@ -1,18 +1,14 @@
 import React from 'react'
-import { Text, TextProps } from 'react-native'
+import { TextProps } from 'react-native'
 
-import styles from './styles'
+import styledComp from './styles'
 
 interface BoldProps extends TextProps {
   children: string
 }
 
 export default (props: BoldProps) => {
-  const { children, style, ...restProps } = props
+  const { children, ...restProps } = props
 
-  return (
-    <Text style={[styles.bold, style]} {...restProps}>
-      {children}
-    </Text>
-  )
+  return <styledComp.Bold {...restProps}>{children}</styledComp.Bold>
 }

@@ -1,93 +1,98 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
+import { ThemeType } from '../../themes/styled'
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#121212',
-    padding: 23,
-  },
+interface Props {
+  theme: ThemeType
+}
 
-  logoContainer: {
-    flex: 1.5,
-    marginTop: 22,
-    width: '100%',
-    justifyContent: 'space-evenly',
-    paddingLeft: 12,
-  },
+const styledComp = {
+  Container: styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
+    padding: 23px;
+  `,
 
-  image: {
-    height: 130,
-    width: 130,
-    borderRadius: 12,
-  },
+  LogoContainer: styled.View`
+    flex: 1.5;
+    margin-top: 22px;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-left: 12px;
+  `,
 
-  title: {
-    fontSize: 32,
-    fontWeight: '600',
-    color: '#fff',
-  },
+  LogoImage: styled.Image`
+    height: 130px;
+    width: 130px;
+    border-radius: 12px;
+  `,
 
-  formContainer: {
-    flex: 2,
-    width: '100%',
-    justifyContent: 'space-evenly',
-  },
+  Title: styled.Text`
+    font-size: 32px;
+    font-weight: 600;
+    color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
+  `,
 
-  lineContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+  FormContainer: styled.View`
+    flex: 2;
+    width: 100%;
+    justify-content: space-evenly;
+  `,
 
-  line: {
-    height: 1,
-    width: 140,
-    borderRadius: 12,
-    backgroundColor: '#fff',
-  },
+  LineContainer: styled.View`
+    flex-direction: row;
+    align-items: center;
+  `,
 
-  lineText: {
-    color: '#fff',
-    marginHorizontal: 26,
-  },
+  Line: styled.View`
+    height: 1px;
+    width: 140px;
+    border-radius: 12px;
+    background-color: ${(props: Props) => props.theme.COLORS.LINE};
+  `,
 
-  buttonsContainer: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'space-around',
-  },
+  LineText: styled.Text`
+    color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
+    margin: 0 26px;
+  `,
 
-  singinContainer: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
+  ButtonsContainer: styled.View`
+    flex: 1;
+    width: 100%;
+    justify-content: space-around;
+  `,
 
-  textSingin: {
-    fontSize: 16,
-    color: '#fff',
-  },
-})
+  SigninContainer: styled.View`
+    justify-content: center;
+    flex-direction: row;
+  `,
 
-export const logo = StyleSheet.create({
-  logoContainer: {
-    flex: 1,
-    marginTop: 52,
-    width: '100%',
-    justifyContent: 'space-evenly',
-    paddingLeft: 12,
-  },
+  TextSignin: styled.Text`
+    font-size: 16px;
+    color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
+  `,
 
-  image: {
-    height: 104,
-    width: 104,
-    borderRadius: 12,
-  },
+  LogoContainerSeparate: styled.View`
+    flex: 1;
+    margin-top: 52px;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-left: 12px;
+  `,
 
-  title: {
-    fontSize: 26,
-    marginTop: 16,
-    fontWeight: '600',
-    color: '#fff',
-  },
-})
+  LogoImageSeparate: styled.Image`
+    height: 104px;
+    width: 104px;
+    border-radius: 12px;
+  `,
+
+  TitleSeparate: styled.Text`
+    font-size: 26px;
+    margin-top: 16px;
+    font-weight: 600;
+    color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
+  `,
+}
+
+export default styledComp

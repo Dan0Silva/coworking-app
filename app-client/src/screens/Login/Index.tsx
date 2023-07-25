@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import {
-  View,
-  Text,
-  Image,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -14,10 +11,10 @@ import Button from '../../components/Button1/Index'
 import Bold from '../../components/Bold/Index'
 import { StackTypes } from '../../routes/Login.routes'
 
-import styles, { logo } from './styles'
+import styledComp from './styles'
 
 export default () => {
-  const [image] = useState(require('../../assets/icon.png'))
+  const [image] = useState(require('../../assets/images/icon.png'))
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false)
   const navigation = useNavigation<StackTypes>()
 
@@ -35,17 +32,30 @@ export default () => {
     }
   }, [])
 
-  const logoStyle = !keyboardIsVisible ? styles : logo
+  const logoStyle = () => {
+    if (keyboardIsVisible) {
+      return (
+        <>
+          <styledComp.LogoImageSeparate source={image} />
+          <styledComp.TitleSeparate>CoolWorking</styledComp.TitleSeparate>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <styledComp.LogoImage source={image} />
+          <styledComp.Title>CoolWorking</styledComp.Title>
+        </>
+      )
+    }
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={logoStyle.logoContainer}>
-          <Image source={image} style={logoStyle.image} />
-          <Text style={logoStyle.title}>CoolWorking</Text>
-        </View>
+      <styledComp.Container>
+        <styledComp.LogoContainer>{logoStyle()}</styledComp.LogoContainer>
 
-        <View style={styles.formContainer}>
+        <styledComp.FormContainer>
           <TextInput
             placeholder="Email"
             autoCapitalize="none"
@@ -55,35 +65,39 @@ export default () => {
           <Button
             title={'Login'}
             onPress={() => {
-              navigation.navigate('home')
+              navigation.navigate('loginConfirmation')
             }}
           />
-        </View>
+        </styledComp.FormContainer>
 
         {!keyboardIsVisible ? (
           <>
-            <View style={styles.lineContainer}>
-              <View style={styles.line}></View>
-              <Text style={styles.lineText}>or</Text>
-              <View style={styles.line}></View>
-            </View>
+            <styledComp.LineContainer>
+              <styledComp.Line />
+              <styledComp.LineText>or</styledComp.LineText>
+              <styledComp.Line />
+            </styledComp.LineContainer>
 
-            <View style={styles.buttonsContainer}>
+            <styledComp.ButtonsContainer>
               <Button title={'Login with google'} icon={'logo-google'} />
 
-              <View style={styles.singinContainer}>
-                <Text style={styles.textSingin}>Don't have an account?</Text>
+              <styledComp.SigninContainer>
+                <styledComp.TextSignin>
+                  Don't have an account?
+                </styledComp.TextSignin>
 
                 <TouchableOpacity>
-                  <Bold style={styles.textSingin}> Sing in</Bold>
+                  <styledComp.TextSignin>
+                    <Bold> Sing in</Bold>
+                  </styledComp.TextSignin>
                 </TouchableOpacity>
-              </View>
-            </View>
+              </styledComp.SigninContainer>
+            </styledComp.ButtonsContainer>
           </>
         ) : (
           <></>
         )}
-      </View>
+      </styledComp.Container>
     </TouchableWithoutFeedback>
   )
 }

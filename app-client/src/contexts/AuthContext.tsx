@@ -1,12 +1,5 @@
 import React, { ReactNode, createContext, useReducer } from 'react'
 
-interface UserType {
-  name: string
-  email: string
-  password: string
-  avatarUrl: string
-}
-
 interface State {
   user: UserType | null
   auth: boolean
@@ -21,7 +14,7 @@ interface Reducers {
   [key: string]: (state: State, action: Action) => State
 }
 
-interface UserContextValue {
+interface AuthContextValue {
   state: State
   dispatch: React.Dispatch<Action>
 }
@@ -52,8 +45,8 @@ const reducers: Reducers = {
   },
 }
 
-export const UserContext = createContext<UserContextValue>(
-  {} as UserContextValue,
+export const AuthContext = createContext<AuthContextValue>(
+  {} as AuthContextValue,
 )
 
 const UserProvider: React.FC<Props> = (props) => {
@@ -65,9 +58,9 @@ const UserProvider: React.FC<Props> = (props) => {
   const [state, dispatch] = useReducer(mainReducer, initialState)
 
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <AuthContext.Provider value={{ state, dispatch }}>
       {props.children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   )
 }
 

@@ -1,50 +1,34 @@
 import React from 'react'
-import {
-  Text,
-  TouchableOpacity,
-  ButtonProps,
-  StyleProp,
-  ViewStyle,
-  TextStyle,
-  View,
-} from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import { ButtonProps } from 'react-native'
 
-import styles from './styles'
+import { ThemeType } from '../../themes/styled'
+import styledComp from './styles'
 
 interface Props extends ButtonProps {
-  icon?: string
+  icon?: any
   title: string
-  style?: {
-    container?: StyleProp<ViewStyle>
-    title?: StyleProp<ViewStyle | TextStyle>
-  }
+  theme?: ThemeType
 }
 
 export default (props: Props) => {
-  const { title, style, icon } = props
-
-  const componentStyle = {
-    container: style?.container || styles.container,
-    title: style?.title || styles.title,
-  }
+  const { title, icon } = props
 
   return (
-    <TouchableOpacity style={componentStyle.container} onPress={props.onPress}>
+    <styledComp.Container onPress={props.onPress}>
       {icon ? (
         <>
-          <View style={styles.icon}>
-            <Ionicons name={icon} size={26} color="black" />
-          </View>
+          <styledComp.Icon>
+            <styledComp.Ionicons name={icon} size={26} />
+          </styledComp.Icon>
 
-          <Text style={[{ flex: 4 }, componentStyle.title]}>{title}</Text>
+          <styledComp.Title_1>{title}</styledComp.Title_1>
         </>
       ) : (
         // else
         <>
-          <Text style={componentStyle.title}>{title}</Text>
+          <styledComp.Title_2>{title}</styledComp.Title_2>
         </>
       )}
-    </TouchableOpacity>
+    </styledComp.Container>
   )
 }
