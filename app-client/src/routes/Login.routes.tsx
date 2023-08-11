@@ -3,9 +3,9 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack'
 
-import Login from '../screens/Login/Index'
-import Home from '../screens/Home/Index'
-import LoginConfirmation from '../screens/LoginConfirmation/Index'
+import Login from '../screens/Login'
+import Home from '../screens/Home'
+import LoginConfirmation from '../screens/LoginConfirmation'
 
 const Stack = createNativeStackNavigator()
 

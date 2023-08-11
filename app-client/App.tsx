@@ -1,4 +1,4 @@
-import Routes from './src/routes/Index'
+import Routes from './src/routes'
 import { ThemeProvider } from 'styled-components/native'
 
 import light from './src/themes/light'

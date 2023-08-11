@@ -6,9 +6,9 @@ import {
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import TextInput from '../../components/TextInput/Index'
-import Button from '../../components/Button1/Index'
-import Bold from '../../components/Bold/Index'
+import TextInput from '../../components/TextInput'
+import Button from '../../components/Button1'
+import Bold from '../../components/Bold'
 import { StackTypes } from '../../routes/Login.routes'
 
 import styledComp from './styles'
