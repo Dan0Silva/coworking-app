@@ -10,6 +10,7 @@ import TextInput from '../../components/TextInput'
 import Button from '../../components/Button1'
 import Bold from '../../components/Bold'
 import { StackTypes } from '../../routes/Login.routes'
+import api from '../../services/apitest'
 
 import styledComp from './styles'
 
@@ -17,6 +18,17 @@ export default () => {
   const [image] = useState(require('../../assets/images/icon.png'))
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false)
   const navigation = useNavigation<StackTypes>()
+
+  const [u, setU] = useState([])
+
+  const fetchData = async () => {
+    try {
+      const response = await api.get('/users')
+      setU(response.data)
+    } catch (error) {
+      console.error('Erro ao buscar os dados:', error)
+    }
+  }
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -30,6 +42,10 @@ export default () => {
       showSubscription.remove()
       hideSubscription.remove()
     }
+  }, [])
+
+  useEffect(() => {
+    fetchData()
   }, [])
 
   const logoStyle = () => {
@@ -79,7 +95,14 @@ export default () => {
             </styledComp.LineContainer>
 
             <styledComp.ButtonsContainer>
-              <Button title={'Login with google'} icon={'logo-google'} />
+              <Button
+                title={'Login with google'}
+                icon={'logo-google'}
+                onPress={() => {
+                  fetchData()
+                  console.warn(u)
+                }}
+              />
 
               <styledComp.SigninContainer>
                 <styledComp.TextSignin>

@@ -1,11 +1,11 @@
 import Routes from './src/routes'
 import { ThemeProvider } from 'styled-components/native'
 
-import light from './src/themes/light'
+import theme from './src/themes'
 
 export default function App() {
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme.light}>
       <Routes />
     </ThemeProvider>
   )
