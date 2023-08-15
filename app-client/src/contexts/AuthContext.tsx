@@ -5,11 +5,6 @@ interface State {
   auth: boolean
 }
 
-interface Action {
-  type: string
-  payload: any
-}
-
 interface Reducers {
   [key: string]: (state: State, action: Action) => State
 }

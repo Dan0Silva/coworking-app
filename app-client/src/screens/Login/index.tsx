@@ -4,30 +4,61 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native'
+import validator from 'validator'
+import Toast from 'react-native-toast-message'
 import { useNavigation } from '@react-navigation/native'
 
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button1'
 import Bold from '../../components/Bold'
 import { StackTypes } from '../../routes/Login.routes'
-import api from '../../services/apitest'
 
 import styledComp from './styles'
 
 export default () => {
-  const [image] = useState(require('../../assets/images/icon.png'))
+  // const { state, dispatch } = useContext(AuthContext)
+
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false)
+  const [image] = useState(require('../../assets/images/icon.png'))
+  const [email, setEmail] = useState('')
+
   const navigation = useNavigation<StackTypes>()
 
-  const [u, setU] = useState([])
+  const handleInputMailChange = (text: string) => {
+    setEmail(text)
+  }
 
-  const fetchData = async () => {
-    try {
-      const response = await api.get('/users')
-      setU(response.data)
-    } catch (error) {
-      console.error('Erro ao buscar os dados:', error)
+  const validationMail = () => {
+    if (!validator.isEmail(email)) {
+      Toast.show({
+        type: 'error',
+        text1: 'Email invalido',
+        text2: 'Por favor, tente novamente',
+      })
+
+      return
     }
+    //validar com a api -->
+    if (true) {
+      navigation.navigate('loginConfirmation')
+    }
+  }
+
+  const logoStyle = () => {
+    if (keyboardIsVisible) {
+      return (
+        <>
+          <styledComp.LogoImageSeparate source={image} />
+          <styledComp.TitleSeparate>CoolWorking</styledComp.TitleSeparate>
+        </>
+      )
+    }
+    return (
+      <>
+        <styledComp.LogoImage source={image} />
+        <styledComp.Title>CoolWorking</styledComp.Title>
+      </>
+    )
   }
 
   useEffect(() => {
@@ -45,26 +76,8 @@ export default () => {
   }, [])
 
   useEffect(() => {
-    fetchData()
+    // redux authContext
   }, [])
-
-  const logoStyle = () => {
-    if (keyboardIsVisible) {
-      return (
-        <>
-          <styledComp.LogoImageSeparate source={image} />
-          <styledComp.TitleSeparate>CoolWorking</styledComp.TitleSeparate>
-        </>
-      )
-    } else {
-      return (
-        <>
-          <styledComp.LogoImage source={image} />
-          <styledComp.Title>CoolWorking</styledComp.Title>
-        </>
-      )
-    }
-  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -74,14 +87,16 @@ export default () => {
         <styledComp.FormContainer>
           <TextInput
             placeholder="Email"
+            value={email}
             autoCapitalize="none"
             keyboardType="email-address"
+            onChangeText={handleInputMailChange}
           />
 
           <Button
             title={'Login'}
             onPress={() => {
-              navigation.navigate('loginConfirmation')
+              validationMail()
             }}
           />
         </styledComp.FormContainer>
@@ -99,8 +114,7 @@ export default () => {
                 title={'Login with google'}
                 icon={'logo-google'}
                 onPress={() => {
-                  fetchData()
-                  console.warn(u)
+                  console.warn('api login with google')
                 }}
               />
 

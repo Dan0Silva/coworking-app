@@ -8,12 +8,10 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/images/icon.png",
-      "resizeMode": "contain",
+      "resizeMode": "",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
