@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components/native'
 import theme from './src/themes'
 
 export default function App() {
+  // novo commit
+
   return (
     <ThemeProvider theme={theme.light}>
       <Routes />
