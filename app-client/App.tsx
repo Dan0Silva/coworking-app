@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components/native'
 import theme from './src/themes'
 
 export default function App() {
-  // novo commit
+  // test
 
   return (
     <ThemeProvider theme={theme.light}>
