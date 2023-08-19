@@ -114,7 +114,7 @@ export default () => {
                 title={'Login with google'}
                 icon={'logo-google'}
                 onPress={() => {
-                  console.warn('api login with google')
+                  navigation.navigate('loginConfirmation')
                 }}
               />
 
