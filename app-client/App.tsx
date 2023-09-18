@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components/native'
 
 import theme from './src/themes'
 
-export default function App() {
+export default function App(props: any) {
   const mytheme = theme.light
   const handleStatusBarColor = mytheme === theme.dark ? 'light' : 'dark'
 

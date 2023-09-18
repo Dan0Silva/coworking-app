@@ -51,3 +51,11 @@ export const BackButton = styled.TouchableHighlight`
 export const BackIcon = styled(Ionicons)`
   color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
 `
+
+export const ButtonContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 42px;
+`

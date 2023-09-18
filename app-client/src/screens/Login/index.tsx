@@ -13,7 +13,7 @@ import Button from '../../components/Button1'
 import Bold from '../../components/Bold'
 import { StackTypes } from '../../routes/Login.routes'
 
-import styledComp from './styles'
+import * as S from './styles'
 
 export default () => {
   // const { state, dispatch } = useContext(AuthContext)
@@ -48,15 +48,15 @@ export default () => {
     if (keyboardIsVisible) {
       return (
         <>
-          <styledComp.LogoImageSeparate source={image} />
-          <styledComp.TitleSeparate>CoolWorking</styledComp.TitleSeparate>
+          <S.LogoImageSeparate source={image} />
+          <S.TitleSeparate>CoolWorking</S.TitleSeparate>
         </>
       )
     }
     return (
       <>
-        <styledComp.LogoImage source={image} />
-        <styledComp.Title>CoolWorking</styledComp.Title>
+        <S.LogoImage source={image} />
+        <S.Title>CoolWorking</S.Title>
       </>
     )
   }
@@ -81,10 +81,10 @@ export default () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <styledComp.Container>
-        <styledComp.LogoContainer>{logoStyle()}</styledComp.LogoContainer>
+      <S.Container>
+        <S.LogoContainer>{logoStyle()}</S.LogoContainer>
 
-        <styledComp.FormContainer>
+        <S.FormContainer>
           <TextInput
             placeholder="Email"
             value={email}
@@ -93,23 +93,29 @@ export default () => {
             onChangeText={handleInputMailChange}
           />
 
+          {/* <S.ForgotPassword>
+            <S.TouchableText onPress={() => console.warn('enviado')}>
+              <Bold>Forgot Password</Bold>
+            </S.TouchableText>
+          </S.ForgotPassword> */}
+
           <Button
             title={'Login'}
             onPress={() => {
               validationMail()
             }}
           />
-        </styledComp.FormContainer>
+        </S.FormContainer>
 
         {!keyboardIsVisible ? (
           <>
-            <styledComp.LineContainer>
-              <styledComp.Line />
-              <styledComp.LineText>or</styledComp.LineText>
-              <styledComp.Line />
-            </styledComp.LineContainer>
+            <S.LineContainer>
+              <S.Line />
+              <S.LineText>or</S.LineText>
+              <S.Line />
+            </S.LineContainer>
 
-            <styledComp.ButtonsContainer>
+            <S.ButtonsContainer>
               <Button
                 title={'Login with google'}
                 icon={'logo-google'}
@@ -118,23 +124,22 @@ export default () => {
                 }}
               />
 
-              <styledComp.SigninContainer>
-                <styledComp.TextSignin>
-                  Don't have an account?
-                </styledComp.TextSignin>
+              <S.SigninContainer>
+                <S.TouchableText>Don't have an account?</S.TouchableText>
 
                 <TouchableOpacity>
-                  <styledComp.TextSignin>
+                  <S.TouchableText
+                    onPress={() => navigation.navigate('createAccount')}>
                     <Bold> Sing in</Bold>
-                  </styledComp.TextSignin>
+                  </S.TouchableText>
                 </TouchableOpacity>
-              </styledComp.SigninContainer>
-            </styledComp.ButtonsContainer>
+              </S.SigninContainer>
+            </S.ButtonsContainer>
           </>
         ) : (
           <></>
         )}
-      </styledComp.Container>
+      </S.Container>
     </TouchableWithoutFeedback>
   )
 }
