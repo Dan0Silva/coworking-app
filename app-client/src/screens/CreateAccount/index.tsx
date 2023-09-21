@@ -1,33 +1,82 @@
 import React from 'react'
-import TextInput from '../../components/TextInput'
 
 import { useNavigation } from '@react-navigation/native'
 import { StackTypes } from '../../routes/Login.routes'
 
 import * as S from './styles'
 import { StatusBar } from 'expo-status-bar'
+import HeaderForm from '../../components/HeaderForm'
+import TextInput from '../../components/TextInput'
+
+function renderInputs(list: Array<String>) {}
 
 export default () => {
   const navigation = useNavigation<StackTypes>()
 
   return (
     <S.Container>
-      <S.HeaderContainer>
-        <S.BackButton>
-          <S.BackIcon
-            name={'arrow-back'}
-            size={32}
-            onPress={() => {
-              navigation.goBack()
-            }}
-          />
-        </S.BackButton>
+      <HeaderForm title={'Create Account'} subtitle={'Step 1'} />
 
-        <S.SubheaderContainer>
-          <S.Title>Create Account</S.Title>
-          <S.Subtitle>Step 1</S.Subtitle>
-        </S.SubheaderContainer>
-      </S.HeaderContainer>
+      <S.ContainerForm>
+        <TextInput
+          containerStyle={{ marginBottom: 20 }}
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+        <TextInput
+          placeholder="Email"
+          // value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          // onChangeText={handleInputMailChange}
+        />
+      </S.ContainerForm>
+
       <StatusBar style={'light'} />
     </S.Container>
   )

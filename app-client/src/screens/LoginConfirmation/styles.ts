@@ -10,7 +10,6 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
-  padding: 23px;
 `
 
 export const TitleContainer = styled.View`
@@ -32,11 +31,13 @@ export const SubtitleContainer = styled.View`
   width: 270px;
   align-items: center;
   justify-content: center;
+  margin-top: 90px;
   margin-bottom: 53px;
 `
 
 export const Subtitle = styled.Text`
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   text-align: center;
   color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
 `
@@ -54,6 +55,7 @@ export const BackIcon = styled(Ionicons)`
 
 export const ButtonContainer = styled.View`
   flex: 1;
+  padding: 23px;
   width: 100%;
   align-items: center;
   justify-content: flex-end;

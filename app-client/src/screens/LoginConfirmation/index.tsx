@@ -7,6 +7,7 @@ import { StackTypes } from '../../routes/Login.routes'
 import * as S from './styles'
 import InputCode from '../../components/InputCode'
 import Button from '../../components/Button1'
+import HeaderForm from '../../components/HeaderForm'
 
 export default () => {
   const navigation = useNavigation<StackTypes>()
@@ -15,18 +16,7 @@ export default () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <S.Container>
-        <S.TitleContainer>
-          <S.BackButton>
-            <S.BackIcon
-              name={'arrow-back'}
-              size={32}
-              onPress={() => {
-                navigation.goBack()
-              }}
-            />
-          </S.BackButton>
-          <S.Title>Code Sent</S.Title>
-        </S.TitleContainer>
+        <HeaderForm title={'Code Sent'} />
 
         <S.SubtitleContainer>
           <S.Subtitle>Please type the verification code</S.Subtitle>

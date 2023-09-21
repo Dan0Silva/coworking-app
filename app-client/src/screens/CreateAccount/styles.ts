@@ -8,47 +8,16 @@ interface Props {
 
 export const Container = styled.View`
   flex: 1;
-  /* align-items: center; */
-  /* justify-content: center; */
+  align-items: center;
   background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
   /* padding: 23px; */
   padding-top: 0px;
 `
 
-export const HeaderContainer = styled.View`
+export const ContainerForm = styled.View`
+  flex: 1;
   width: 100%;
-  height: 220px;
-  border-radius: 0 0 20px 20px;
-  justify-content: space-between;
   padding: 23px;
-  padding-top: 50px;
-
-  background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND_BUTTON};
-`
-
-export const SubheaderContainer = styled.View`
-  margin-bottom: 20px;
-`
-
-export const BackButton = styled.TouchableHighlight`
-  height: 40px;
-  width: 40px;
+  margin-top: 40px;
   align-items: center;
-  justify-content: center;
-`
-
-export const BackIcon = styled(Ionicons)`
-  color: ${(props: Props) => props.theme.COLORS.TEXT_BUTTON};
-`
-
-export const Title = styled.Text`
-  font-size: 32px;
-  font-weight: 600;
-  color: ${(props: Props) => props.theme.COLORS.TEXT_BUTTON};
-`
-
-export const Subtitle = styled.Text`
-  font-size: 18px;
-  font-weight: 400;
-  color: ${(props: Props) => props.theme.COLORS.TEXT_BUTTON};
 `
