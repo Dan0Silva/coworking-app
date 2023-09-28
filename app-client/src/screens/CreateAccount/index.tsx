@@ -35,7 +35,8 @@ const defaultUser = {
   email: '',
   phone_number: '',
   password: '',
-  photo_ulr: '',
+  confirm_password: '',
+  photo_url: '',
 }
 
 const handleString = (text: string) => {
@@ -46,6 +47,45 @@ export default () => {
   const navigation = useNavigation<StackTypes>()
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState(defaultUser)
+
+  const handleNextStep = () => {
+    if (currentStep < formSteps.length - 1) {
+      setCurrentStep(currentStep + 1)
+    } else {
+      navigation.navigate('home')
+    }
+  }
+
+  const handlePreviousStep = () => {
+    if (currentStep != 0) {
+      setCurrentStep(currentStep - 1)
+    } else {
+      navigation.goBack()
+    }
+  }
+
+  const mapLabelToAttribute = (string: string) => {
+    switch (string) {
+      case 'first_name':
+        return user.first_name
+      case 'last_name':
+        return user.last_name
+      case 'cpf':
+        return user.cpf
+      case 'birth_rate':
+        return user.birth_rate
+      case 'email':
+        return user.email
+      case 'phone_number':
+        return user.phone_number
+      case 'password':
+        return user.password
+      case 'confirm_password':
+        return user.confirm_password
+      case 'photo_url':
+        return user.photo_url
+    }
+  }
 
   const renderForm = () => {
     const currentFormStep = formSteps[currentStep]
@@ -64,10 +104,12 @@ export default () => {
               key={index}
               containerStyle={{ marginBottom: 20 }}
               placeholder={field}
-              // value={email}
+              value={mapLabelToAttribute(handleString(field))}
               autoCapitalize="none"
               keyboardType="email-address"
-              // onChangeText={handleInputMailChange}
+              onChangeText={(text) =>
+                setUser({ ...user, [handleString(field)]: text })
+              }
             />
           ))}
         </S.ContainerForm>
@@ -77,22 +119,6 @@ export default () => {
         </S.ContainerButton>
       </>
     )
-  }
-
-  const handleNextStep = () => {
-    if (currentStep < formSteps.length - 1) {
-      setCurrentStep(currentStep + 1)
-    } else {
-      // O usuário atingiu a última etapa, você pode enviar os dados do formulário.
-    }
-  }
-
-  const handlePreviousStep = () => {
-    if (currentStep > formSteps.length - 1) {
-      setCurrentStep(currentStep - 1)
-    } else {
-      return null
-    }
   }
 
   return (

@@ -27,7 +27,9 @@ export default (props: Props) => {
           name={'arrow-back'}
           size={32}
           onPress={() => {
-            navigation.goBack()
+            {
+              props.backButton ? props.backButton() : navigation.goBack()
+            }
           }}
         />
       </S.BackButton>
