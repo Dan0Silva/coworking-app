@@ -21,3 +21,11 @@ export const ContainerForm = styled.View`
   margin-top: 40px;
   align-items: center;
 `
+
+export const ContainerButton = styled.View`
+  height: 120px;
+  width: 100%;
+  padding: 23px;
+  justify-content: center;
+  align-items: center;
+`

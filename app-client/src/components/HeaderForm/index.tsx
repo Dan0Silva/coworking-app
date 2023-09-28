@@ -8,6 +8,7 @@ import * as S from './styles'
 interface Props {
   title: string
   subtitle?: string
+  backButton?: Function | null
 }
 
 export default (props: Props) => {
