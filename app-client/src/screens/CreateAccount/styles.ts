@@ -15,10 +15,11 @@ export const Container = styled.View`
 `
 
 export const ContainerForm = styled.View`
-  flex: 1;
+  height: 60%;
   width: 100%;
   padding: 23px;
-  margin-top: 40px;
+  /* background-color: red; */
+  margin-top: 15px;
   align-items: center;
 `
 
