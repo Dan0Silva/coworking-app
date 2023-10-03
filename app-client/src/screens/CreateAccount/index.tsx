@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 import Button from '../../components/Button1'
 import HeaderForm from '../../components/HeaderForm'
 import TextInput from '../../components/TextInput'
+import { createUser } from '../../services/api'
 
 const formSteps = [
   {
@@ -28,15 +29,13 @@ const formSteps = [
 ]
 
 const defaultUser = {
-  first_name: '',
-  last_name: '',
+  firstName: '',
+  lastName: '',
   cpf: '',
-  birth_rate: '',
   email: '',
-  phone_number: '',
-  password: '',
-  confirm_password: '',
-  photo_url: '',
+  birthDate: '',
+  phoneNumber: '',
+  profilePhoto: '',
 }
 
 const handleString = (text: string) => {
@@ -52,7 +51,8 @@ export default () => {
     if (currentStep < formSteps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      navigation.navigate('home')
+      // navigation.navigate('home')
+      createUser(user)
     }
   }
 
@@ -67,23 +67,23 @@ export default () => {
   const mapLabelToAttribute = (string: string) => {
     switch (string) {
       case 'first_name':
-        return user.first_name
+        return user.firstName
       case 'last_name':
-        return user.last_name
+        return user.lastName
       case 'cpf':
         return user.cpf
       case 'birth_rate':
-        return user.birth_rate
+        return user.birthDate
       case 'email':
         return user.email
       case 'phone_number':
-        return user.phone_number
-      case 'password':
-        return user.password
-      case 'confirm_password':
-        return user.confirm_password
+        return user.phoneNumber
+      // case 'password':
+      //   return user.password
+      // case 'confirm_password':
+      //   return user.confirm_password
       case 'photo_url':
-        return user.photo_url
+        return user.profilePhoto
     }
   }
 

@@ -15,7 +15,7 @@ export const Container = styled.View`
 `
 
 export const ContainerForm = styled.View`
-  height: 60%;
+  height: 56%;
   width: 100%;
   padding: 23px;
   /* background-color: red; */
