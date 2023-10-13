@@ -14,7 +14,7 @@ export const HeaderContainer = styled.View`
   padding: 23px;
   padding-top: 50px;
 
-  background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND_BUTTON};
+  background-color: ${(props: Props) => props.theme.COLORS.TEXT_PRIMARY};
 `
 
 export const SubheaderContainer = styled.View`

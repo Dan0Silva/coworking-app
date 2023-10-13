@@ -8,8 +8,8 @@ export default {
     TEXT_BUTTON: '#fff',
     TEXT_LABEL: '#fff',
 
-    BACKGROUND_BUTTON: '#282821',
-    BACKGROUND_INPUT: '#282821',
+    BACKGROUND_BUTTON: '#121214',
+    BACKGROUND_INPUT: '#121214',
 
     LINE: '#121214',
   },

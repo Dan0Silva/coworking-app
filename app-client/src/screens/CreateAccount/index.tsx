@@ -12,17 +12,27 @@ import { createUser } from '../../services/api'
 
 const formSteps = [
   {
-    fields: ['First Name', 'Last Name', 'cpf', 'Birth Rate'],
+    fields: [
+      { name: 'First Name', value: 'firstName' },
+      { name: 'Last Name', value: 'lastName' },
+      { name: 'Cpf', value: 'cpf', mask: '999.999.999-99' },
+      { name: 'Birth Date', value: 'birthDate', mask: '99/99/9999' },
+    ],
     headerText: 'Step one',
     buttonText: 'Continue',
   },
   {
-    fields: ['Email', 'Phone Number', 'Password', 'Confirm Password'],
+    fields: [
+      { name: 'Email', value: 'email' },
+      { name: 'Phone Number', value: 'phoneNumber', mask: '(99) 99999-9999' },
+      { name: 'Password', value: 'password' },
+      { name: 'Confirm Password', value: 'confirmPassword' },
+    ],
     headerText: 'Step two',
     buttonText: 'Continue',
   },
   {
-    fields: ['Photo Url'],
+    fields: [{ name: 'Photo Url', value: 'profilePhoto' }],
     headerText: 'Step three',
     buttonText: 'Register',
   },
@@ -35,6 +45,8 @@ const defaultUser = {
   email: '',
   birthDate: '',
   phoneNumber: '',
+  password: '',
+  confirmPassword: '',
   profilePhoto: '',
 }
 
@@ -47,12 +59,16 @@ export default () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState(defaultUser)
 
+  const validationStep = (currentStep: number) => {}
+
   const handleNextStep = () => {
+    validationStep(currentStep)
+
     if (currentStep < formSteps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
       // navigation.navigate('home')
-      createUser(user)
+      console.log(user)
     }
   }
 
@@ -78,10 +94,10 @@ export default () => {
         return user.email
       case 'phone_number':
         return user.phoneNumber
-      // case 'password':
-      //   return user.password
-      // case 'confirm_password':
-      //   return user.confirm_password
+      case 'password':
+        return user.password
+      case 'confirm_password':
+        return user.confirmPassword
       case 'photo_url':
         return user.profilePhoto
     }
@@ -102,14 +118,13 @@ export default () => {
           {currentFormStep.fields.map((field, index) => (
             <TextInput
               key={index}
+              mask={field.mask ? field.mask : ''}
               containerStyle={{ marginBottom: 20 }}
-              placeholder={field}
-              value={mapLabelToAttribute(handleString(field))}
+              placeholder={field.name}
+              value={mapLabelToAttribute(handleString(field.value))}
               autoCapitalize="none"
               keyboardType="email-address"
-              onChangeText={(text) =>
-                setUser({ ...user, [handleString(field)]: text })
-              }
+              onChangeText={(text) => setUser({ ...user, [field.value]: text })}
             />
           ))}
         </S.ContainerForm>
