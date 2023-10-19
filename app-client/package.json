@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@fnando/cpf": "^1.0.2",
     "@types/react": "~18.0.14",
     "@types/validator": "^13.11.1",
     "typescript": "^4.9.4"

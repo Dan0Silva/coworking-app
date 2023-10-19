@@ -2,13 +2,20 @@ import React, { useState } from 'react'
 
 import { useNavigation } from '@react-navigation/native'
 import { StackTypes } from '../../routes/Login.routes'
+import { isValid } from '@fnando/cpf'
 
 import * as S from './styles'
 import { StatusBar } from 'expo-status-bar'
 import Button from '../../components/Button1'
 import HeaderForm from '../../components/HeaderForm'
 import TextInput from '../../components/TextInput'
+import Toast, { ToastShowParams } from 'react-native-toast-message'
 import { createUser } from '../../services/api'
+
+interface validationFormJson {
+  validate: boolean
+  toast: ToastShowParams
+}
 
 const formSteps = [
   {
@@ -59,15 +66,49 @@ export default () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState(defaultUser)
 
-  const validationStep = (currentStep: number) => {}
+  const validationStep = (): validationFormJson => {
+    let validateFormJson = { validate: true, toast: {} }
+
+    const validation = [
+      () => {
+        if (isValid(user.cpf)) {
+          return { validate: true, toast: {} }
+        } else {
+          console.log('test1222222222')
+
+          validateFormJson = {
+            validate: false,
+            toast: {
+              type: 'error',
+              text1: 'Erro no campo de cpf',
+              text2: 'Por favor, tente novamente',
+            },
+          }
+        }
+      },
+      () => {},
+      () => {},
+    ]
+
+    validation[currentStep]()
+    return validateFormJson
+  }
 
   const handleNextStep = () => {
-    validationStep(currentStep)
+    const validateFormJson = validationStep()
 
     if (currentStep < formSteps.length - 1) {
-      setCurrentStep(currentStep + 1)
+      if (
+        // validateFormJson.validate
+        true
+      ) {
+        setCurrentStep(currentStep + 1)
+      } else {
+        Toast.show(validateFormJson.toast)
+      }
     } else {
       // navigation.navigate('home')
+
       console.log(user)
     }
   }
