@@ -1,11 +1,12 @@
 import React from 'react'
-import { TextInputProps, ViewStyle } from 'react-native'
+import { ViewStyle } from 'react-native'
 
 import styledComp from './styles'
+import { MaskedTextInputProps } from 'react-native-mask-text'
 import { ThemeType } from '../../themes/styled'
 import { useTheme } from 'styled-components'
 
-interface Props extends TextInputProps {
+interface Props extends MaskedTextInputProps {
   theme?: ThemeType
   containerStyle?: ViewStyle
 }

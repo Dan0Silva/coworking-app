@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { MaskedTextInput } from 'react-native-mask-text'
 import { ThemeType } from '../../themes/styled'
 
 interface Props {
@@ -16,7 +17,7 @@ const styledComp = {
     background: ${(props: Props) => props.theme.COLORS.BACKGROUND_INPUT};
   `,
 
-  TextInput: styled.TextInput`
+  TextInput: styled(MaskedTextInput)`
     font-size: 16px;
     color: ${(props: Props) => props.theme.COLORS.TEXT_LABEL};
   `,

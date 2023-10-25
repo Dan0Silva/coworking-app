@@ -6,7 +6,8 @@ import {
 import Login from '../screens/Login'
 import Home from '../screens/Home'
 import LoginConfirmation from '../screens/LoginConfirmation'
-import CreateAccount from '../screens/CreateAccount'
+import CreateAccount from '../screens/CreateUser'
+import UserCreationSuccess from '../screens/UserCreationSuccess'
 
 const Stack = createNativeStackNavigator()
 
@@ -15,6 +16,7 @@ type StackNavigation = {
   loginConfirmation: undefined
   home: undefined
   createAccount: undefined
+  UserCreationSuccess: undefined
 }
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>
@@ -28,6 +30,10 @@ export default () => {
       <Stack.Screen name={'home'} component={Home} />
       <Stack.Screen name={'loginConfirmation'} component={LoginConfirmation} />
       <Stack.Screen name={'createAccount'} component={CreateAccount} />
+      <Stack.Screen
+        name={'userCreationSuccess'}
+        component={UserCreationSuccess}
+      />
     </Stack.Navigator>
   )
 }

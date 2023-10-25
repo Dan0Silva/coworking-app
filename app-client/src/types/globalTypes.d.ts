@@ -8,9 +8,8 @@ interface UserType {
   birthDate: string
   phoneNumber: string
 
-  // password: string
-
-  profilePhoto: string
+  password: string
+  confirmPassword: string
 
   // balanceAccount: string
   // createdAt: string

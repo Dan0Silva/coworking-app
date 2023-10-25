@@ -6,16 +6,20 @@ import { isValid } from '@fnando/cpf'
 
 import * as S from './styles'
 import { StatusBar } from 'expo-status-bar'
+import { TouchableWithoutFeedback, Keyboard } from 'react-native'
 import Button from '../../components/Button1'
 import HeaderForm from '../../components/HeaderForm'
 import TextInput from '../../components/TextInput'
+import MaskedTextInput from '../../components/MaskedTextInput'
 import Toast, { ToastShowParams } from 'react-native-toast-message'
 import { createUser } from '../../services/api'
 
-interface validationFormJson {
+interface ValidationFormJson {
   validate: boolean
   toast: ToastShowParams
 }
+
+type UserField = keyof UserType
 
 const formSteps = [
   {
@@ -38,11 +42,6 @@ const formSteps = [
     headerText: 'Step two',
     buttonText: 'Continue',
   },
-  {
-    fields: [{ name: 'Photo Url', value: 'profilePhoto' }],
-    headerText: 'Step three',
-    buttonText: 'Register',
-  },
 ]
 
 const defaultUser = {
@@ -54,11 +53,6 @@ const defaultUser = {
   phoneNumber: '',
   password: '',
   confirmPassword: '',
-  profilePhoto: '',
-}
-
-const handleString = (text: string) => {
-  return text.trim().toLowerCase().replace(/\s+/g, '_')
 }
 
 export default () => {
@@ -66,7 +60,7 @@ export default () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState(defaultUser)
 
-  const validationStep = (): validationFormJson => {
+  const validationStep = (): ValidationFormJson => {
     let validateFormJson = { validate: true, toast: {} }
 
     const validation = [
@@ -74,8 +68,6 @@ export default () => {
         if (isValid(user.cpf)) {
           return { validate: true, toast: {} }
         } else {
-          console.log('test1222222222')
-
           validateFormJson = {
             validate: false,
             toast: {
@@ -86,8 +78,20 @@ export default () => {
           }
         }
       },
-      () => {},
-      () => {},
+      () => {
+        if (user.password === user.confirmPassword) {
+          return { validate: true, toast: {} }
+        } else {
+          validateFormJson = {
+            validate: false,
+            toast: {
+              type: 'error',
+              text1: 'Senhas não coincidem',
+              text2: 'Favor verificar a senha',
+            },
+          }
+        }
+      },
     ]
 
     validation[currentStep]()
@@ -98,18 +102,14 @@ export default () => {
     const validateFormJson = validationStep()
 
     if (currentStep < formSteps.length - 1) {
-      if (
-        // validateFormJson.validate
-        true
-      ) {
+      if (true) {
         setCurrentStep(currentStep + 1)
+        console.log('\n---\n', user)
       } else {
         Toast.show(validateFormJson.toast)
       }
     } else {
-      // navigation.navigate('home')
-
-      console.log(user)
+      navigation.navigate('UserCreationSuccess')
     }
   }
 
@@ -118,29 +118,6 @@ export default () => {
       setCurrentStep(currentStep - 1)
     } else {
       navigation.goBack()
-    }
-  }
-
-  const mapLabelToAttribute = (string: string) => {
-    switch (string) {
-      case 'first_name':
-        return user.firstName
-      case 'last_name':
-        return user.lastName
-      case 'cpf':
-        return user.cpf
-      case 'birth_rate':
-        return user.birthDate
-      case 'email':
-        return user.email
-      case 'phone_number':
-        return user.phoneNumber
-      case 'password':
-        return user.password
-      case 'confirm_password':
-        return user.confirmPassword
-      case 'photo_url':
-        return user.profilePhoto
     }
   }
 
@@ -156,18 +133,38 @@ export default () => {
         />
 
         <S.ContainerForm>
-          {currentFormStep.fields.map((field, index) => (
-            <TextInput
-              key={index}
-              mask={field.mask ? field.mask : ''}
-              containerStyle={{ marginBottom: 20 }}
-              placeholder={field.name}
-              value={mapLabelToAttribute(handleString(field.value))}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              onChangeText={(text) => setUser({ ...user, [field.value]: text })}
-            />
-          ))}
+          {currentFormStep.fields.map((field, index) => {
+            if (field.mask) {
+              return (
+                <MaskedTextInput
+                  key={index}
+                  mask={field.mask}
+                  containerStyle={{ marginBottom: 20 }}
+                  placeholder={field.name}
+                  value={user[field.value as UserField]}
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  onChangeText={(text) =>
+                    setUser({ ...user, [field.value]: text })
+                  }
+                />
+              )
+            } else {
+              return (
+                <TextInput
+                  key={index}
+                  containerStyle={{ marginBottom: 20 }}
+                  placeholder={field.name}
+                  value={user[field.value as UserField]}
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  onChangeText={(text) =>
+                    setUser({ ...user, [field.value]: text })
+                  }
+                />
+              )
+            }
+          })}
         </S.ContainerForm>
 
         <S.ContainerButton>
@@ -178,10 +175,12 @@ export default () => {
   }
 
   return (
-    <S.Container>
-      {renderForm()}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <S.Container>
+        {renderForm()}
 
-      <StatusBar style={'light'} />
-    </S.Container>
+        <StatusBar style={'light'} />
+      </S.Container>
+    </TouchableWithoutFeedback>
   )
 }
