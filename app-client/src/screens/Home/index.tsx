@@ -1,12 +1,14 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import styledComp from './styles'
+import * as S from './styles'
+
+import SpaceCard from '../../components/SpaceCard'
 
 export default () => {
   return (
-    <styledComp.Container>
-      <Text>Esta é a home</Text>
-    </styledComp.Container>
+    <S.Container>
+      <SpaceCard />
+    </S.Container>
   )
 }

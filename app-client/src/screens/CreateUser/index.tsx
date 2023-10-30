@@ -61,7 +61,7 @@ export default () => {
   const [user, setUser] = useState(defaultUser)
 
   const validationStep = (): ValidationFormJson => {
-    let validateFormJson = { validate: true, toast: {} }
+    let validateFormJson: ValidationFormJson = { validate: true, toast: {} }
 
     const validation = [
       () => {
@@ -79,14 +79,17 @@ export default () => {
         }
       },
       () => {
-        if (user.password === user.confirmPassword) {
+        if (
+          user.password.length != 0 &&
+          user.password === user.confirmPassword
+        ) {
           return { validate: true, toast: {} }
         } else {
           validateFormJson = {
             validate: false,
             toast: {
               type: 'error',
-              text1: 'Senhas não coincidem',
+              text1: 'Problema com as senhas',
               text2: 'Favor verificar a senha',
             },
           }
@@ -99,17 +102,21 @@ export default () => {
   }
 
   const handleNextStep = () => {
-    const validateFormJson = validationStep()
+    const validateFormJson: ValidationFormJson = validationStep()
 
     if (currentStep < formSteps.length - 1) {
-      if (true) {
+      if (validateFormJson.validate) {
         setCurrentStep(currentStep + 1)
-        console.log('\n---\n', user)
       } else {
         Toast.show(validateFormJson.toast)
       }
     } else {
-      navigation.navigate('UserCreationSuccess')
+      if (validateFormJson.validate) {
+        createUser(user)
+        navigation.navigate('userCreationSuccess')
+      } else {
+        Toast.show(validateFormJson.toast)
+      }
     }
   }
 

@@ -16,7 +16,7 @@ type StackNavigation = {
   loginConfirmation: undefined
   home: undefined
   createAccount: undefined
-  UserCreationSuccess: undefined
+  userCreationSuccess: undefined
 }
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>

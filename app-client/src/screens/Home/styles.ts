@@ -5,13 +5,9 @@ interface Props {
   theme: ThemeType
 }
 
-const styledComp = {
-  Container: styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
-  `,
-}
-
-export default styledComp
+export const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
+`
