@@ -11,3 +11,10 @@ export const Container = styled.View`
   justify-content: center;
   background-color: ${(props: Props) => props.theme.COLORS.BACKGROUND};
 `
+
+export const Feed = styled.ScrollView`
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+`
