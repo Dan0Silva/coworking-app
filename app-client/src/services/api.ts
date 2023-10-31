@@ -1,19 +1,22 @@
 import axios from 'axios'
-import Toast from 'react-native-toast-message'
+import { ToastShowParams } from 'react-native-toast-message'
 
 const api = axios.create({
-  baseURL: 'http://192.168.1.110:3000',
+  baseURL: 'http://192.168.1.104:3000',
 })
 
-const createUser = async (myUser: UserType) => {
+const createUser = async (myUser: UserType): Promise<ToastShowParams> => {
   try {
     await api.post('/users', myUser)
-    Toast.show({
+    return {
       type: 'success',
       text1: 'Sucesso ao criar usuário!',
-    })
+    }
   } catch (error) {
-    console.error('Erro ao buscar os dados:', error)
+    return {
+      type: 'error',
+      text1: 'Erro ao criar usuário!',
+    }
   }
 }
 

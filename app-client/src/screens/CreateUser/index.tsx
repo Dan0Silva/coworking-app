@@ -6,38 +6,80 @@ import { isValid } from '@fnando/cpf'
 
 import * as S from './styles'
 import { StatusBar } from 'expo-status-bar'
-import { TouchableWithoutFeedback, Keyboard } from 'react-native'
+import {
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardTypeOptions,
+} from 'react-native'
 import Button from '../../components/Button1'
 import HeaderForm from '../../components/HeaderForm'
 import TextInput from '../../components/TextInput'
 import MaskedTextInput from '../../components/MaskedTextInput'
-import Toast, { ToastShowParams } from 'react-native-toast-message'
+import Toast from 'react-native-toast-message'
 import { createUser } from '../../services/api'
-
-interface ValidationFormJson {
-  validate: boolean
-  toast: ToastShowParams
-}
 
 type UserField = keyof UserType
 
 const formSteps = [
   {
     fields: [
-      { name: 'First Name', value: 'firstName' },
-      { name: 'Last Name', value: 'lastName' },
-      { name: 'Cpf', value: 'cpf', mask: '999.999.999-99' },
-      { name: 'Birth Date', value: 'birthDate', mask: '99/99/9999' },
+      {
+        name: 'First Name',
+        value: 'firstName',
+        secure: false,
+        keyboardType: 'default',
+      },
+      {
+        name: 'Last Name',
+        value: 'lastName',
+        secure: false,
+        keyboardType: 'default',
+      },
+      {
+        name: 'Cpf',
+        value: 'cpf',
+        mask: '999.999.999-99',
+        secure: false,
+        keyboardType: 'numeric',
+      },
+      {
+        name: 'Birth Date',
+        value: 'birthDate',
+        mask: '99/99/9999',
+        secure: false,
+        keyboardType: 'numeric',
+      },
     ],
     headerText: 'Step one',
     buttonText: 'Continue',
   },
   {
     fields: [
-      { name: 'Email', value: 'email' },
-      { name: 'Phone Number', value: 'phoneNumber', mask: '(99) 99999-9999' },
-      { name: 'Password', value: 'password' },
-      { name: 'Confirm Password', value: 'confirmPassword' },
+      {
+        name: 'Email',
+        value: 'email',
+        keyboardType: 'email-address',
+        secure: false,
+      },
+      {
+        name: 'Phone Number',
+        value: 'phoneNumber',
+        mask: '(99) 99999-9999',
+        secure: false,
+        keyboardType: 'numeric',
+      },
+      {
+        name: 'Password',
+        value: 'password',
+        secure: true,
+        keyboardType: 'default',
+      },
+      {
+        name: 'Confirm Password',
+        value: 'confirmPassword',
+        secure: true,
+        keyboardType: 'default',
+      },
     ],
     headerText: 'Step two',
     buttonText: 'Continue',
@@ -60,8 +102,8 @@ export default () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState(defaultUser)
 
-  const validationStep = (): ValidationFormJson => {
-    let validateFormJson: ValidationFormJson = { validate: true, toast: {} }
+  const validationStep = (): ResponseJson => {
+    let validateFormJson: ResponseJson = { validate: true, toast: {} }
 
     const validation = [
       () => {
@@ -101,8 +143,8 @@ export default () => {
     return validateFormJson
   }
 
-  const handleNextStep = () => {
-    const validateFormJson: ValidationFormJson = validationStep()
+  const handleNextStep = async () => {
+    const validateFormJson: ResponseJson = validationStep()
 
     if (currentStep < formSteps.length - 1) {
       if (validateFormJson.validate) {
@@ -112,8 +154,11 @@ export default () => {
       }
     } else {
       if (validateFormJson.validate) {
-        createUser(user)
-        navigation.navigate('userCreationSuccess')
+        const response = await createUser(user)
+        if (response.type == 'success') {
+          navigation.navigate('userCreationSuccess')
+        }
+        Toast.show(response)
       } else {
         Toast.show(validateFormJson.toast)
       }
@@ -150,7 +195,8 @@ export default () => {
                   placeholder={field.name}
                   value={user[field.value as UserField]}
                   autoCapitalize="none"
-                  keyboardType="email-address"
+                  secureTextEntry={field.secure}
+                  keyboardType={field.keyboardType as KeyboardTypeOptions}
                   onChangeText={(text) =>
                     setUser({ ...user, [field.value]: text })
                   }
@@ -164,7 +210,8 @@ export default () => {
                   placeholder={field.name}
                   value={user[field.value as UserField]}
                   autoCapitalize="none"
-                  keyboardType="email-address"
+                  secureTextEntry={field.secure}
+                  keyboardType={field.keyboardType as KeyboardTypeOptions}
                   onChangeText={(text) =>
                     setUser({ ...user, [field.value]: text })
                   }

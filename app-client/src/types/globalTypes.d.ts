@@ -16,6 +16,11 @@ interface UserType {
   // updatedAt: string
 }
 
+interface ResponseJson {
+  validate: boolean
+  toast: ToastShowParams
+}
+
 interface Action {
   type: string
   payload: any
