@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ToastShowParams } from 'react-native-toast-message'
 
-const my_ip = '192.168.1.110'
+const my_ip = '10.150.132.124'
 
 const api = axios.create({
   baseURL: `http://${my_ip}:3000`,
