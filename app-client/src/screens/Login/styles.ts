@@ -40,6 +40,12 @@ export const FormContainer = styled.View`
   margin-top: 60px;
 `
 
+export const FormContainerFields = styled.View`
+  width: 100%;
+  height: 136px;
+  justify-content: space-between;
+`
+
 export const LineContainer = styled.View`
   flex-direction: row;
   align-items: center;

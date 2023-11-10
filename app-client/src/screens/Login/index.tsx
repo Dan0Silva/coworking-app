@@ -4,7 +4,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native'
-import validator from 'validator'
 import Toast from 'react-native-toast-message'
 import { useNavigation } from '@react-navigation/native'
 
@@ -14,6 +13,7 @@ import Bold from '../../components/Bold'
 import { StackTypes } from '../../routes/Login.routes'
 
 import * as S from './styles'
+import { LoginUser } from '../../services/api'
 
 export default () => {
   // const { state, dispatch } = useContext(AuthContext)
@@ -21,25 +21,19 @@ export default () => {
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false)
   const [image] = useState(require('../../assets/images/icon.png'))
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigation = useNavigation<StackTypes>()
 
-  const handleInputMailChange = (text: string) => {
-    setEmail(text)
-  }
+  const validationLogin = async () => {
+    const response = await LoginUser(email, password)
 
-  const validationMail = () => {
-    if (!validator.isEmail(email)) {
-      Toast.show({
-        type: 'error',
-        text1: 'Email invalido',
-        text2: 'Por favor, tente novamente',
-      })
-
-      return
+    if (response.type === 'error') {
+      Toast.show(response)
     }
-    //validar com a api -->
-    if (true) {
+
+    if (response.type === 'success') {
+      Toast.show(response)
       navigation.navigate('loginConfirmation')
     }
   }
@@ -85,13 +79,27 @@ export default () => {
         <S.LogoContainer>{logoStyle()}</S.LogoContainer>
 
         <S.FormContainer>
-          <TextInput
-            placeholder="Email"
-            value={email}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            onChangeText={handleInputMailChange}
-          />
+          <S.FormContainerFields>
+            <TextInput
+              placeholder="Email"
+              value={email}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              onChangeText={(text) => {
+                setEmail(text)
+              }}
+            />
+
+            <TextInput
+              placeholder="Password"
+              value={password}
+              autoCapitalize="none"
+              secureTextEntry={true}
+              onChangeText={(text) => {
+                setPassword(text)
+              }}
+            />
+          </S.FormContainerFields>
 
           {/* <S.ForgotPassword>
             <S.TouchableText onPress={() => console.warn('enviado')}>
@@ -102,7 +110,7 @@ export default () => {
           <Button
             title={'Login'}
             onPress={() => {
-              validationMail()
+              validationLogin()
             }}
           />
         </S.FormContainer>
