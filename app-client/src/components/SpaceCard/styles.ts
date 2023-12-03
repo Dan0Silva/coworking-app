@@ -6,6 +6,7 @@ const width = Math.floor(Dimensions.get('window').width)
 
 export const Container = styled.View`
   width: 100%;
+  margin-bottom: 10px;
 `
 
 export const HeadContainer = styled.View`
@@ -29,21 +30,34 @@ export const ProfileSpacePhoto = styled.Image`
   border-radius: 40px;
 `
 
+export const BackImage = styled.View`
+  overflow: hidden;
+  border-radius: 12px;
+`
+
 export const Image = styled.ImageBackground`
   width: 100%;
   justify-content: flex-end;
-  height: ${width}px;
+  height: ${width * 0.9}px;
   background-color: #f0f0f0;
+`
+
+export const FooterContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  height: 80px;
+`
+
+export const SubFooterContainer = styled.View`
+  width: 200px;
+  height: 80%;
+  margin-top: 8px;
+  padding-left: 12px;
 `
 
 export const AddressContainer = styled.View`
   height: 35px;
-  margin: 12px;
   flex-direction: row;
-  border-radius: 12px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: rgba(255, 255, 255, 0.6);
   align-items: center;
 `
 
@@ -59,25 +73,6 @@ export const AddressText = styled.Text`
   margin-left: 6px;
 `
 
-export const FooterContainer = styled.View`
-  width: 100%;
-  flex-direction: row;
-  height: 80px;
-`
-
-export const SubFooterContainer = styled.View`
-  width: 250px;
-  height: 80%;
-  margin-top: 8px;
-  padding-left: 12px;
-`
-
-export const PriceText = styled.Text`
-  font-size: 30px;
-  font-weight: 600;
-  color: rgb(0, 195, 255);
-`
-
 export const RatingContainer = styled.View`
   flex: 1;
   flex-direction: row;
@@ -90,14 +85,17 @@ export const SpaceRatingIcon = styled(Ionicons)`
 `
 
 export const SpaceRatingText = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
+  margin-left: 6px;
   font-weight: 500;
-  color: rgb(255, 221, 0);
+  /* color: rgb(255, 221, 0); */
 `
 
 export const ReserveButton = styled.TouchableOpacity`
-  flex: 1;
-  margin: 10px;
+  width: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
   border-radius: 12px;
   align-items: center;
   justify-content: center;

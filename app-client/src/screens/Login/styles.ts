@@ -36,18 +36,18 @@ export const Title = styled.Text`
 export const FormContainer = styled.View`
   flex: 2;
   width: 100%;
-  justify-content: space-around;
   margin-top: 60px;
 `
 
 export const FormContainerFields = styled.View`
   width: 100%;
   height: 136px;
-  justify-content: space-between;
+  margin-bottom: auto;
 `
 
 export const LineContainer = styled.View`
   flex-direction: row;
+  margin-top: 10px;
   align-items: center;
 `
 
@@ -64,7 +64,7 @@ export const LineText = styled.Text`
 `
 
 export const ButtonsContainer = styled.View`
-  flex: 1;
+  height: 70px;
   width: 100%;
   justify-content: space-around;
 `

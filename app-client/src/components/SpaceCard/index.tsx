@@ -1,44 +1,66 @@
 import React from 'react'
 
 import * as S from './styles'
+import { useNavigation } from '@react-navigation/native'
+import { StackTypes } from '../../routes/Login.routes'
+import { ViewProps } from 'react-native'
 
-export default () => {
+interface Props extends ViewProps {
+  nameSpace: string
+  uriIcon: string
+  uriImage: string
+  address: string
+  rating: string
+}
+
+export default (props: Props) => {
   const profileSpacePhoto = require('../../assets/images/icon.png')
   const coworkingImage = require('../../assets/images/coworking.jpg')
+
+  const { nameSpace, uriIcon, uriImage, address, rating } = props
+
+  const navigator = useNavigation<StackTypes>()
 
   return (
     <S.Container>
       <S.HeadContainer>
-        <S.NameSpace>Eureca CoWorking</S.NameSpace>
-        <S.ProfileSpacePhoto source={profileSpacePhoto} />
+        <S.NameSpace>{nameSpace}</S.NameSpace>
+        <S.ProfileSpacePhoto
+          source={{
+            uri: uriIcon,
+          }}
+        />
       </S.HeadContainer>
 
-      <S.Image source={coworkingImage}>
-        <S.AddressContainer>
-          <S.AddressIcon
-            name={'ios-location-sharp'}
-            size={18}
-            color={'rgb(235, 12, 12)'}
-          />
-          <S.AddressText>221B, Baker Street, London</S.AddressText>
-        </S.AddressContainer>
-      </S.Image>
+      <S.BackImage>
+        <S.Image
+          source={{
+            uri: uriImage,
+          }}></S.Image>
+      </S.BackImage>
 
       <S.FooterContainer>
         <S.SubFooterContainer>
-          <S.PriceText>R$ 42.99</S.PriceText>
+          <S.AddressContainer>
+            <S.AddressIcon
+              name={'ios-location-sharp'}
+              size={18}
+              color={'rgb(235, 12, 12)'}
+            />
+            <S.AddressText>{address}</S.AddressText>
+          </S.AddressContainer>
           <S.RatingContainer>
             <S.SpaceRatingIcon
               name="star"
               size={18}
               color={'rgb(255, 221, 0)'}
             />
-            <S.SpaceRatingText> 4.5</S.SpaceRatingText>
+            <S.SpaceRatingText> {rating}</S.SpaceRatingText>
           </S.RatingContainer>
         </S.SubFooterContainer>
         <S.ReserveButton
           onPress={() => {
-            console.warn('ola')
+            navigator.navigate('spaceScreen')
           }}>
           <S.TextReserveButton>Reserve</S.TextReserveButton>
         </S.ReserveButton>

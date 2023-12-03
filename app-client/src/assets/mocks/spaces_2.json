@@ -1,0 +1,29 @@
+[
+  {
+    "space": {
+      "title": "Cozy Coworking Hub",
+      "icon": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y293b3JraW5nfGVufDB8MHwwfHx8Mg%3D%3D",
+      "address": "45 Grove Str. San Francisco",
+      "rating": "4.2"
+    }
+  },
+  {
+    "space": {
+      "title": "Innovate Workspaces",
+      "icon": "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://images.unsplash.com/photo-1606836576983-8b458e75221d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y293b3JraW5nfGVufDB8MHwwfHx8Mg%3D%3D",
+      "address": "18 York Street, Toronto",
+      "rating": "4.5"
+    }
+  },
+  {
+    "space": {
+      "title": "Tech Tower CoLab",
+      "icon": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://images.unsplash.com/photo-1614070776241-fb47cec38278?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvd29ya2luZ3xlbnwwfDB8MHx8fDI%3D",
+      "address": "221B Baker Street, London",
+      "rating": "4.1"
+    }
+  }
+]

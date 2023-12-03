@@ -1,0 +1,47 @@
+[
+  {
+    "space": {
+      "title": "Urban Coworking Airport ",
+      "icon": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://casacor.abril.com.br/wp-content/uploads/sites/7/2021/08/urban-airport-coworking.jpg?quality=80&strip=info&w=1024",
+      "address": "Aeroporto Internacional de Guarulhos",
+      "rating": "4.9"
+    }
+  },
+  {
+    "space": {
+      "title": "Selina Coworking",
+      "icon": "https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMGJsYWNrJTIwZ2lybHxlbnwwfDB8MHx8fDI%3D",
+      "image": "https://casacor.abril.com.br/wp-content/uploads/sites/7/2021/08/selina-coworkings-em-sao-paulo.jpg?quality=80&strip=info&w=1024",
+      "address": "R. Aspicuelta, 237/245 - Alto de Pinheiros, São Paulo/SP",
+      "rating": "4.4"
+    }
+  },
+  {
+    "space": {
+      "title": "Google for Startup",
+      "icon": "https://images.unsplash.com/photo-1636910043919-c3792c7a0f60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHByb2ZpbGUlMjBwaG90byUyMGdpcmx8ZW58MHwwfDB8fHwy",
+      "image": "https://casacor.abril.com.br/wp-content/uploads/sites/7/2021/08/google-campus-sao-paulo.jpg?quality=80&strip=info&w=1024",
+      "address": "Rua Coronel Oscar Porto,70 - Paraíso/SP",
+      "rating": "4.6"
+    }
+  },
+  {
+    "space": {
+      "title": "Hilo Coworking",
+      "icon": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://casacor.abril.com.br/wp-content/uploads/sites/7/2021/08/HILO_Coworking_vila-madalena.png?w=704",
+      "address": "R. Aspicuelta, 345, Vila Madalena, São Paulo/SP",
+      "rating": "4.2"
+    }
+  },
+  {
+    "space": {
+      "title": "CIVI-CO",
+      "icon": "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2ZpbGV8ZW58MHwwfDB8fHwy",
+      "image": "https://casacor.abril.com.br/wp-content/uploads/sites/7/2021/08/civi-co-coworking-sao-paulo.png?w=920",
+      "address": "R. Dr. Virgílio de Carvalho Pinto, 445, Pinheiros, São Paulo/SP",
+      "rating": "4.5"
+    }
+  }
+]

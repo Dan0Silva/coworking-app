@@ -9,6 +9,7 @@ import CreateAccount from '../screens/CreateUser'
 import UserCreationSuccess from '../screens/UserCreationSuccess'
 
 import Auth from './Auth.routes'
+import SpaceScreen from '../screens/SpaceScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +19,7 @@ type StackNavigation = {
   home: undefined
   createAccount: undefined
   userCreationSuccess: undefined
+  spaceScreen: undefined
 }
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>
@@ -31,6 +33,7 @@ export default () => {
       <Stack.Screen name={'home'} component={Auth} />
       <Stack.Screen name={'loginConfirmation'} component={LoginConfirmation} />
       <Stack.Screen name={'createAccount'} component={CreateAccount} />
+      <Stack.Screen name={'spaceScreen'} component={SpaceScreen} />
       <Stack.Screen
         name={'userCreationSuccess'}
         component={UserCreationSuccess}

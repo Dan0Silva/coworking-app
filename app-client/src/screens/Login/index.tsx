@@ -16,8 +16,6 @@ import * as S from './styles'
 import { LoginUser } from '../../services/api'
 
 export default () => {
-  // const { state, dispatch } = useContext(AuthContext)
-
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false)
   const [image] = useState(require('../../assets/images/icon.png'))
   const [email, setEmail] = useState('')
@@ -25,17 +23,16 @@ export default () => {
 
   const navigation = useNavigation<StackTypes>()
 
-  const validationLogin = async () => {
-    const response = await LoginUser(email, password)
-
-    if (response.type === 'error') {
-      Toast.show(response)
-    }
-
-    if (response.type === 'success') {
-      Toast.show(response)
-      navigation.navigate('loginConfirmation')
-    }
+  const validationLogin = () => {
+    // if (email == '' || password == '') {
+    //   Toast.show({
+    //     type: 'error',
+    //     text1: 'Erro no login',
+    //     text2: 'campos obrigatórios não preeenchidos',
+    //   })
+    // } else {
+    navigation.navigate('home')
+    // }
   }
 
   const logoStyle = () => {
@@ -69,10 +66,6 @@ export default () => {
     }
   }, [])
 
-  useEffect(() => {
-    // redux authContext
-  }, [])
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <S.Container>
@@ -82,6 +75,7 @@ export default () => {
           <S.FormContainerFields>
             <TextInput
               placeholder="Email"
+              containerStyle={{ marginBottom: 20 }}
               value={email}
               autoCapitalize="none"
               keyboardType="email-address"
@@ -101,12 +95,6 @@ export default () => {
             />
           </S.FormContainerFields>
 
-          {/* <S.ForgotPassword>
-            <S.TouchableText onPress={() => console.warn('enviado')}>
-              <Bold>Forgot Password</Bold>
-            </S.TouchableText>
-          </S.ForgotPassword> */}
-
           <Button
             title={'Login'}
             onPress={() => {
@@ -124,14 +112,6 @@ export default () => {
             </S.LineContainer>
 
             <S.ButtonsContainer>
-              <Button
-                title={'Login with google'}
-                icon={'logo-google'}
-                onPress={() => {
-                  navigation.navigate('loginConfirmation')
-                }}
-              />
-
               <S.SigninContainer>
                 <S.TouchableText>Don't have an account?</S.TouchableText>
 
