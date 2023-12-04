@@ -25,3 +25,29 @@ interface Action {
   type: string
   payload: any
 }
+
+interface Space {
+  name: string
+  price: string
+  address: {
+    number: string
+    address: string
+    bairro: string // em ingles, n achei o nome em ingless
+  }
+  blocks: {
+    name: string
+    peopleLimit: number
+    description: string
+    spaceId: number // ou uuid sla
+    blockCategoryId: {
+      name: string
+      range: [number, number] // min e max e pessoas
+    }
+  }
+  avaliations: [
+    {
+      user: UserType
+      rate: number // ou string ?
+    },
+  ]
+}
